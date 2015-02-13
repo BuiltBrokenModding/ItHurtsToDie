@@ -1,5 +1,8 @@
 package com.builtbroken.death;
 
+import com.builtbroken.death.handlers.OnDeathHandler;
+import com.builtbroken.death.handlers.PlayerDamageHandler;
+import com.builtbroken.death.handlers.PlayerUpdateHandler;
 import com.builtbroken.mc.lib.mod.AbstractMod;
 import com.builtbroken.mc.lib.mod.ModCreativeTab;
 import cpw.mods.fml.common.Mod;
@@ -7,6 +10,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.common.MinecraftForge;
 
 /**
  * Created by robert on 11/18/2014.
@@ -53,8 +57,12 @@ public final class Death extends AbstractMod
     public void preInit(FMLPreInitializationEvent event)
     {
         super.preInit(event);
-        CREATIVE_TAB = new ModCreativeTab("ItHurtsToDie");
-        getManager().setTab(CREATIVE_TAB);
+        //TODO re-enabled creative tab when we have items
+        //CREATIVE_TAB = new ModCreativeTab("ItHurtsToDie");
+        //getManager().setTab(CREATIVE_TAB);
+        MinecraftForge.EVENT_BUS.register(new OnDeathHandler());
+        MinecraftForge.EVENT_BUS.register(new PlayerDamageHandler());
+        MinecraftForge.EVENT_BUS.register(new PlayerUpdateHandler());
     }
 
     @Mod.EventHandler

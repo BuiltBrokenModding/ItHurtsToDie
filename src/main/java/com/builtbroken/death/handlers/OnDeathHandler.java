@@ -39,22 +39,25 @@ public class OnDeathHandler
             for (int slot = 0; slot < ((EntityPlayer) event.entity).inventory.mainInventory.length; slot++)
             {
                 ItemStack stack = ((EntityPlayer) event.entity).inventory.mainInventory[slot];
-                //TODO handle other explosives
-                if(stack.getItem() == Items.tnt_minecart || stack.getItem() == Item.getItemFromBlock(Blocks.tnt))
+                if(stack != null)
                 {
-                    tnt_count += stack.stackSize;
-                    ((EntityPlayer) event.entity).inventory.mainInventory[slot] = null;
-                }
-                else
-                {
-                    ((EntityPlayer) event.entity).inventory.mainInventory[slot] = handleItem(new ItemStackWrapper(stack), event.source);
+                    //TODO handle other explosives
+                    if (stack.getItem() == Items.tnt_minecart || stack.getItem() == Item.getItemFromBlock(Blocks.tnt))
+                    {
+                        tnt_count += stack.stackSize;
+                        ((EntityPlayer) event.entity).inventory.mainInventory[slot] = null;
+                    }
+                    else
+                    {
+                        ((EntityPlayer) event.entity).inventory.mainInventory[slot] = handleItem(new ItemStackWrapper(stack), event.source);
+                    }
                 }
             }
             //TODO add progress delay to lure in looters before blowing up
             if(tnt_count > 0)
             {
                 tnt_count = Math.max(tnt_count, 20);
-                IExplosiveHandler ex = ExplosiveRegistry.get("tnt");
+                IExplosiveHandler ex = ExplosiveRegistry.get("TNT");
                 if(ex != null)
                 {
                     ExplosiveRegistry.triggerExplosive(new Location(event.entity), ex, new TriggerCause.TriggerCauseEntity(event.entity), tnt_count, null);
