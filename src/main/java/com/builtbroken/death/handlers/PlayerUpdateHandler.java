@@ -21,7 +21,7 @@ public class PlayerUpdateHandler
     @SubscribeEvent
     public void onPlayerUpdate(LivingEvent.LivingUpdateEvent event)
     {
-        if(event.entity instanceof EntityPlayer && !event.entity.worldObj.isRemote && event.entity.worldObj.getWorldInfo().getWorldTime() % 10 == 0)
+        if(event.entity instanceof EntityPlayer && !((EntityPlayer) event.entity).capabilities.isCreativeMode && !event.entity.worldObj.isRemote && event.entity.worldObj.getWorldInfo().getWorldTime() % 10 == 0)
         {
             if(event.entity.isBurning() && event.entity.worldObj.rand.nextBoolean())
             {
