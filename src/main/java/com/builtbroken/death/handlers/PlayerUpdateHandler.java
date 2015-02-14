@@ -47,6 +47,7 @@ public class PlayerUpdateHandler
                 //TODO add progress delay to lure in looters before blowing up
                 if(tnt_count > 0)
                 {
+                    //TODO trigger client side visuals and audio
                     tnt_count = Math.max(tnt_count, 20);
                     IExplosiveHandler ex = ExplosiveRegistry.get("TNT");
                     if(ex != null)
