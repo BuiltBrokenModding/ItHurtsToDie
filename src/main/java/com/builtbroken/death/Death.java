@@ -50,7 +50,7 @@ public final class Death extends AbstractMod
 
     public Death()
     {
-        super(DOMAIN);
+        super(DOMAIN, "ItHurtsToDie");
     }
 
     @Mod.EventHandler
