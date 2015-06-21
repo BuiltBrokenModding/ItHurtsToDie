@@ -2,11 +2,10 @@ package com.builtbroken.death.handlers;
 
 import com.builtbroken.death.events.DestroyItemEvent;
 import com.builtbroken.mc.api.event.TriggerCause;
-import com.builtbroken.mc.api.explosive.IExplosive;
 import com.builtbroken.mc.api.explosive.IExplosiveHandler;
 import com.builtbroken.mc.lib.transform.vector.Location;
 import com.builtbroken.mc.lib.world.explosive.ExplosiveRegistry;
-import com.builtbroken.mc.prefab.recipe.ItemStackWrapper;
+import com.builtbroken.mc.prefab.items.ItemStackWrapper;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
