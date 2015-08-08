@@ -46,7 +46,7 @@ version = "${project.minecraft.version}-${config.version.mod.major}.${config.ver
 if (project.hasProperty("bambooBuildNumber"))
     version += project.bambooBuildNumber
 else
-    version += "NIGHTLY"
+    version +=  getDate()
 println "version = "+ version
 
 println "Current Minecraft version = " + minecraft.apiVersion
